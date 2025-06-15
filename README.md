@@ -2,3 +2,4 @@
 
 ## Hooks,COntext API, Tailwind, Typescript, Autentifikacia
 
+1. 55 minuta
