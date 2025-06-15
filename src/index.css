@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
-@theme {
-  --font-main: "Inter", serif;
+@layer base {
+  :root {
+    --font-main: "Inter", serif;
+  }
+}
+
+@media (max-height: 950px) {
+  h1 {
+    top: 5%;
+  }
 }
