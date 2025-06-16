@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 export default function AddTodoForm() {
   return (
     <form action="">
@@ -8,13 +10,7 @@ export default function AddTodoForm() {
                    rounded-[5px] block my-2 text-[1.25rem]
                    w-full px-1.5"
       />
-      <button
-        type="button"
-        className="h-10 bg-stone-600 text-white cursor-pointer w-full rounded-[5px]
-        hover:bg-amber-900"
-      >
-        Add to list
-      </button>
+      <Button buttonType="primary">Add to list</Button>
     </form>
   );
 }
