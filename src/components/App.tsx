@@ -25,7 +25,8 @@ function App() {
       >
         <Header todos={todos} setTodos={setTodos} />
         <TodoList todos={todos} setTodos={setTodos} />
-        <SideBar />
+
+        <SideBar todos={todos} setTodos={setTodos} />
       </main>
       <Footer />
     </div>
