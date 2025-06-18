@@ -2,4 +2,4 @@
 
 ## Hooks,COntext API, Tailwind, Typescript, Autentifikacia
 
-1. 2:03
+1. 2:37

@@ -16,6 +16,7 @@ export default function AddTodoForm({ todos, setTodos }) {
             isCompleted: false,
           },
         ]);
+        setTodoText("");
       }}
     >
       <h1 className="font-medium text-slate-950">Add a todo</h1>
