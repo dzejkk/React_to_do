@@ -8,12 +8,26 @@ export default function TodoList() {
     { id: 3, text: "Read a book", isCompleted: false },
   ]);
 
+  function handleClick(id: number) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isCompleted: !todo.isCompleted };
+        }
+        return todo;
+      })
+    );
+  }
+
+  const totalNumberOfTodos = todos.length;
+
   return (
     <ul>
       {todos.map((task) => (
         <li
           key={task.id}
           className="flex justify-between px-2.5 py-2.5 border-b border-black/[0.08] cursor-pointer"
+          onClick={() => handleClick(task.id)}
         >
           <span
             className={`${

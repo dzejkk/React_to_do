@@ -3,8 +3,10 @@ export default function DeleteButton({ setTodos, id }) {
     <button
       type="button"
       className="cursor-pointer"
-      onClick={() => setTodos((prev) => prev.filter((todo) => todo.id !== id))}
-      // prev is predosla hodnota ktoru nam posle react automaticky
+      onClick={(e) => {
+        e.stopPropagation(); //to stop bubling click event up to the tree
+        setTodos((prev) => prev.filter((todo) => todo.id !== id));
+      }}
     >
       ❌
     </button>
