@@ -1,13 +1,6 @@
 import DeleteButton from "./DeleteButton";
-import { useState } from "react";
 
-export default function TodoList() {
-  const [todos, setTodos] = useState([
-    { id: 1, text: "Buy groceries", isCompleted: false },
-    { id: 2, text: "Walk the dog", isCompleted: true },
-    { id: 3, text: "Read a book", isCompleted: false },
-  ]);
-
+export default function TodoList({ todos, setTodos }) {
   function handleClick(id: number) {
     setTodos(
       todos.map((todo) => {
@@ -18,8 +11,6 @@ export default function TodoList() {
       })
     );
   }
-
-  const totalNumberOfTodos = todos.length;
 
   return (
     <ul>

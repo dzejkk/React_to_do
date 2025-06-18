@@ -1,3 +1,4 @@
+import { useState } from "react";
 import BackgroundHeading from "./BackgroundHeading";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -5,6 +6,12 @@ import SideBar from "./SideBar";
 import TodoList from "./TodoList";
 
 function App() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: "Buy groceries", isCompleted: false },
+    { id: 2, text: "Walk the dog", isCompleted: true },
+    { id: 3, text: "Read a book", isCompleted: false },
+  ]);
+
   return (
     <div className="flex flex-col justify-center items-center font-main bg-orange-100 h-screen">
       <BackgroundHeading />
@@ -16,8 +23,8 @@ function App() {
                          grid grid-cols-[7fr_4fr] grid-rows-[59px_1fr] border-b
                         border-black/[0.08] overflow-hidden"
       >
-        <Header />
-        <TodoList />
+        <Header todos={todos} setTodos={setTodos} />
+        <TodoList todos={todos} setTodos={setTodos} />
         <SideBar />
       </main>
       <Footer />

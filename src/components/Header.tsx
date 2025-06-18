@@ -1,7 +1,7 @@
 import Counter from "./Counter";
 import Logo from "./Logo";
 
-export default function Header() {
+export default function Header({ todos }) {
   return (
     <header
       className="flex justify-between items-center
@@ -9,7 +9,7 @@ export default function Header() {
                        px-6"
     >
       <Logo />
-      <Counter />
+      <Counter todos={todos} />
     </header>
   );
 }
