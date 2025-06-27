@@ -5,8 +5,50 @@ import Header from "./Header";
 import SideBar from "./SideBar";
 import TodoList from "./TodoList";
 
+type Todo = {
+  id: number;
+  text: string;
+  isCompleted: boolean;
+};
+
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const handleAddTodo = (todoText: string) => {
+    if (todoText === "") {
+      alert("u must write todo");
+      return;
+    }
+    if (todos.length >= 3) {
+      alert("log in to add more todos");
+      return;
+    } else {
+      setTodos((prev) => [
+        ...prev,
+        {
+          id: prev.length + 1,
+          text: todoText,
+          isCompleted: false,
+        },
+      ]);
+    }
+  };
+
+  const handleToggleTodo = (id: number) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isCompleted: !todo.isCompleted };
+        }
+        return todo;
+      })
+    );
+  };
+
+  const handleDeleteTodo = (id: number) => {
+    //to stop bubling click event up to the tree
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  };
 
   return (
     <div className="flex flex-col justify-center items-center font-main bg-orange-100 h-screen">
@@ -19,10 +61,15 @@ function App() {
                          grid grid-cols-[7fr_4fr] grid-rows-[59px_1fr] border-b
                         border-black/[0.08] overflow-hidden"
       >
-        <Header todos={todos} setTodos={setTodos} />
-        <TodoList todos={todos} setTodos={setTodos} />
+        <Header todos={todos} />
 
-        <SideBar todos={todos} setTodos={setTodos} />
+        <TodoList
+          todos={todos}
+          handleToggleTodo={handleToggleTodo}
+          handleDeleteTodo={handleDeleteTodo}
+        />
+
+        <SideBar todos={todos} handleAddTodo={handleAddTodo} />
       </main>
       <Footer />
     </div>

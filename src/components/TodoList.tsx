@@ -1,24 +1,23 @@
 import DeleteButton from "./DeleteButton";
 
-export default function TodoList({ todos, setTodos }) {
-  function handleClick(id: number) {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, isCompleted: !todo.isCompleted };
-        }
-        return todo;
-      })
-    );
-  }
-
+export default function TodoList({
+  todos,
+  handleToggleTodo,
+  handleDeleteTodo,
+}) {
   return (
     <ul>
+      {todos.length === 0 && (
+        <li className="h-full flex justify-center items-center font-semibold">
+          start by adding to do
+        </li>
+      )}
+
       {todos.map((task) => (
         <li
           key={task.id}
           className="flex justify-between px-2.5 py-2.5 border-b border-black/[0.08] cursor-pointer"
-          onClick={() => handleClick(task.id)}
+          onClick={() => handleToggleTodo(task.id)}
         >
           <span
             className={`${
@@ -27,7 +26,7 @@ export default function TodoList({ todos, setTodos }) {
           >
             {task.text}
           </span>
-          <DeleteButton setTodos={setTodos} id={task.id} />
+          <DeleteButton id={task.id} handleDeleteTodo={handleDeleteTodo} />
         </li>
       ))}
     </ul>

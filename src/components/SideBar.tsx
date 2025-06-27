@@ -1,13 +1,13 @@
 import AddTodoForm from "./AddTodoForm";
 import Button from "./Button";
 
-export default function SideBar({ todos, setTodos }) {
+export default function SideBar({ todos, handleAddTodo }) {
   return (
     <section
       className="col-[2/3] row-[2/3] bg-stone-50 border-l
                       border-black/[0.08] px-2 py-2 flex flex-col"
     >
-      <AddTodoForm todos={todos} setTodos={setTodos} />
+      <AddTodoForm todos={todos} handleAddTodo={handleAddTodo} />
 
       <div className="mt-auto">
         <Button buttonType="secondary">log in</Button>

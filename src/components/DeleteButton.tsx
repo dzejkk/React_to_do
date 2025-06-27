@@ -1,11 +1,11 @@
-export default function DeleteButton({ setTodos, id }) {
+export default function DeleteButton({ setTodos, id, handleDeleteTodo }) {
   return (
     <button
       type="button"
       className="cursor-pointer"
       onClick={(e) => {
-        e.stopPropagation(); //to stop bubling click event up to the tree
-        setTodos((prev) => prev.filter((todo) => todo.id !== id));
+        e.stopPropagation();
+        handleDeleteTodo(id); //to stop bubling click event up to the tree
       }}
     >
       ❌
