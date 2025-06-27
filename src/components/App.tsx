@@ -14,6 +14,13 @@ export type Todo = {
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
+  // derived state
+  const totalNumbersOfTodos = todos.length;
+  const numberOfCompletedTodos = todos.filter(
+    (todo) => todo.isCompleted
+  ).length;
+
+  // event handlers
   const handleAddTodo = (todoText: string) => {
     if (todoText === "") {
       alert("u must write todo");
@@ -61,7 +68,10 @@ function App() {
                          grid grid-cols-[7fr_4fr] grid-rows-[59px_1fr] border-b
                         border-black/[0.08] overflow-hidden"
       >
-        <Header todos={todos} />
+        <Header
+          totalNumbersOfTodos={totalNumbersOfTodos}
+          numberOfCompletedTodos={numberOfCompletedTodos}
+        />
 
         <TodoList
           todos={todos}
