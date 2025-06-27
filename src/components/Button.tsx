@@ -1,4 +1,9 @@
-export default function Button({ buttonType, children }) {
+type ButtonProps = {
+  buttonType?: "primary" | "secondary";
+  children: React.ReactNode;
+};
+
+export default function Button({ buttonType, children }: ButtonProps) {
   return (
     <button
       type="submit"

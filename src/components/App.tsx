@@ -5,7 +5,7 @@ import Header from "./Header";
 import SideBar from "./SideBar";
 import TodoList from "./TodoList";
 
-type Todo = {
+export type Todo = {
   id: number;
   text: string;
   isCompleted: boolean;
@@ -69,7 +69,7 @@ function App() {
           handleDeleteTodo={handleDeleteTodo}
         />
 
-        <SideBar todos={todos} handleAddTodo={handleAddTodo} />
+        <SideBar handleAddTodo={handleAddTodo} />
       </main>
       <Footer />
     </div>
