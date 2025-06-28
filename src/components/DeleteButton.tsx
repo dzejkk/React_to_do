@@ -1,19 +1,20 @@
+import { useContext } from "react";
+import { TodosContext } from "../contexts/TodosCOntextProvider";
+
 type DeleteButtonProps = {
   id: number;
-  handleDeleteTodo: (id: number) => void;
 };
 
-export default function DeleteButton({
-  id,
-  handleDeleteTodo,
-}: DeleteButtonProps) {
+export default function DeleteButton({ id }: DeleteButtonProps) {
+  const { handleDeleteTodo } = useContext(TodosContext);
+
   return (
     <button
       type="button"
       className="cursor-pointer"
       onClick={(e) => {
         e.stopPropagation();
-        handleDeleteTodo(id); //to stop bubling click event up to the tree
+        handleDeleteTodo(id); //to stop bubbling click event up to the tree
       }}
     >
       ❌

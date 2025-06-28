@@ -1,15 +1,7 @@
 import Counter from "./Counter";
 import Logo from "./Logo";
 
-type HeaderProps = {
-  totalNumbersOfTodos: number;
-  numberOfCompletedTodos: number;
-};
-
-export default function Header({
-  numberOfCompletedTodos,
-  totalNumbersOfTodos,
-}: HeaderProps) {
+export default function Header() {
   return (
     <header
       className="flex justify-between items-center
@@ -17,10 +9,7 @@ export default function Header({
                        px-6"
     >
       <Logo />
-      <Counter
-        totalNumbersOfTodos={totalNumbersOfTodos}
-        numberOfCompletedTodos={numberOfCompletedTodos}
-      />
+      <Counter />
     </header>
   );
 }
