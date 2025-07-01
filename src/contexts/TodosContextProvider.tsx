@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import type { Todo } from "../lib/types";
+import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 
 type TTodosContex = {
   todos: Todo[];
@@ -29,6 +30,9 @@ const getTodos = () => {
 export default function TodosContextProvider({
   children,
 }: TodosContextProviderProps) {
+  // auth
+  const { isAuthenticated } = useKindeAuth();
+  //auth
   const [todos, setTodos] = useState<Todo[]>(getTodos);
 
   // derived state
@@ -43,7 +47,7 @@ export default function TodosContextProvider({
       alert("u must write todo");
       return;
     }
-    if (todos.length >= 3) {
+    if (todos.length >= 3 && !isAuthenticated) {
       alert("log in to add more todos");
       return;
     } else {
@@ -75,8 +79,6 @@ export default function TodosContextProvider({
   };
 
   //side efects
-
-  // get todos from local storage
 
   //add todos to local storage
   useEffect(() => {
