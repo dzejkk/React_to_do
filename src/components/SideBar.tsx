@@ -11,24 +11,25 @@ export default function SideBar() {
                       border-black/[0.08] px-2 py-2 flex flex-col"
     >
       <AddTodoForm />
-
-      {isAuthenticated ? (
-        <>
-          <p> Loged in as : {user?.email}</p>
-          <Button buttonType="secondary" onClick={logout}>
-            Logout
-          </Button>
-        </>
-      ) : (
-        <div className="mt-auto">
-          <Button onClick={login} buttonType="secondary">
-            log in
-          </Button>
-          <Button onClick={register} buttonType="secondary">
-            Register
-          </Button>
-        </div>
-      )}
+      <div className="mt-auto">
+        {isAuthenticated ? (
+          <>
+            <p> Loged in as : {user?.email}</p>
+            <Button buttonType="secondary" onClick={logout}>
+              Logout
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button onClick={login} buttonType="secondary">
+              log in
+            </Button>
+            <Button onClick={register} buttonType="secondary">
+              Register
+            </Button>
+          </>
+        )}
+      </div>
     </section>
   );
 }
