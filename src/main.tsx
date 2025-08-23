@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./components/App.tsx";
-import TodosContextProvider from "./contexts/TodosCOntextProvider.tsx";
+import TodosContextProvider from "./contexts/TodosContextProvider.tsx";
 import { KindeProvider } from "@kinde-oss/kinde-auth-react";
 
 createRoot(document.getElementById("root")!).render(

@@ -1,9 +1,11 @@
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import AddTodoForm from "./AddTodoForm";
 import Button from "./Button";
+import useSounds from "../hooks/useSounds.js";
 
 export default function SideBar() {
   const { login, register, logout, isAuthenticated, user } = useKindeAuth();
+  const { playMainCLick } = useSounds();
 
   return (
     <section
@@ -21,10 +23,22 @@ export default function SideBar() {
           </>
         ) : (
           <>
-            <Button onClick={login} buttonType="secondary">
+            <Button
+              onClick={async () => {
+                playMainCLick();
+                await login();
+              }}
+              buttonType="secondary"
+            >
               log in
             </Button>
-            <Button onClick={register} buttonType="secondary">
+            <Button
+              onClick={async () => {
+                await register();
+                playMainCLick();
+              }}
+              buttonType="secondary"
+            >
               Register
             </Button>
           </>

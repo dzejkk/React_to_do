@@ -1,12 +1,19 @@
 import { useContext } from "react";
-import { TodosContext } from "../contexts/TodosCOntextProvider";
+import { TodosContext } from "../contexts/TodosContextProvider";
+import useSounds from "../hooks/useSounds.ts";
 
 type DeleteButtonProps = {
   id: number;
+  handleDeleteTodo: (id: number) => void;
 };
 
 export default function DeleteButton({ id }: DeleteButtonProps) {
-  const { handleDeleteTodo } = useContext(TodosContext);
+  const todosContext = useContext(TodosContext);
+  if (!todosContext) {
+    throw new Error("TodosContext is not available");
+  }
+  const { handleDeleteTodo } = todosContext;
+  const { playDeleteClick } = useSounds();
 
   return (
     <button
@@ -14,7 +21,8 @@ export default function DeleteButton({ id }: DeleteButtonProps) {
       className="cursor-pointer"
       onClick={(e) => {
         e.stopPropagation();
-        handleDeleteTodo(id); //to stop bubbling click event up to the tree
+        handleDeleteTodo(id);
+        playDeleteClick(); //to stop bubbling click event up to the tree
       }}
     >
       ❌

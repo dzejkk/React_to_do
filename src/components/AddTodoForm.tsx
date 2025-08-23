@@ -1,10 +1,12 @@
 import Button from "./Button";
 import { useState } from "react";
 import { useTodosContext } from "../lib/hooks";
+import useSounds from "../hooks/useSounds.ts";
 
 export default function AddTodoForm() {
   const [todoText, setTodoText] = useState("");
   const { handleAddTodo } = useTodosContext();
+  const { playMainCLick, playRandomKeyboard } = useSounds();
 
   return (
     <form
@@ -29,8 +31,16 @@ export default function AddTodoForm() {
         onChange={(e) => {
           setTodoText(e.target.value);
         }}
+        onKeyDown={() => playRandomKeyboard()}
       />
-      <Button buttonType="primary">Add to list</Button>
+      <Button
+        buttonType="primary"
+        onClick={async () => {
+          playMainCLick();
+        }}
+      >
+        Add to list
+      </Button>
     </form>
   );
 }

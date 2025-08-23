@@ -1,9 +1,11 @@
 import DeleteButton from "./DeleteButton";
+import useSounds from "../hooks/useSounds.ts";
 
 import { useTodosContext } from "../lib/hooks";
 
 export default function TodoList() {
   const { todos, handleToggleTodo, handleDeleteTodo } = useTodosContext();
+  const { playFullfiledClick } = useSounds();
 
   return (
     <ul>
@@ -17,7 +19,10 @@ export default function TodoList() {
         <li
           key={task.id}
           className="flex justify-between px-2.5 py-2.5 border-b border-black/[0.08] cursor-pointer"
-          onClick={() => handleToggleTodo(task.id)}
+          onClick={() => {
+            handleToggleTodo(task.id);
+            playFullfiledClick();
+          }}
         >
           <span
             className={`${
