@@ -4,7 +4,7 @@ export function SoundToggle() {
   const { soundsEnabled, toggleSounds } = useSoundContext();
 
   return (
-    <button onClick={toggleSounds}>
+    <button type="button" onClick={toggleSounds}>
       {soundsEnabled ? "🔊" : "🔇"} {soundsEnabled ? "ON" : "OFF"}
     </button>
   );
