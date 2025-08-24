@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import SideBar from "./SideBar";
 import TodoList from "./TodoList";
+import { SoundToggle } from "./SoundToggle";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <SideBar />
       </main>
       <Footer />
+      <SoundToggle />
     </div>
   );
 }
